@@ -17,14 +17,13 @@ def main():
     # read the csv file
     data = pd.read_csv(file_name)
     data = data.sort_values(by=['timestamp']).copy()
-    print(data)
     
-    '''
-    apply cost to the payer
-    internal_mode: 1 if the cost is from the csv file
-                   0 if the cost is from user input
-    '''
     def apply_cost(cost_points, payer, internal_mode=1):
+        '''
+        apply cost to the payer
+        internal_mode: 1 if the cost is from the csv file
+                       0 if the cost is from user input
+        '''
         if (internal_mode):
             selected_data = data[(data['payer'] == payer) & (data['points'] > 0)]
         else:
